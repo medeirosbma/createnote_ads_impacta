@@ -1,0 +1,25 @@
+{% extends 'notas/model.html' %}
+{% block conteudo %}
+
+<div style="text-align: center;" class="container">
+  <h1>Notas Cadastradas</h1>
+
+  <div class="container">
+      <table class="table table-striped">
+          <tr>
+              <th>id</th>
+              <th>titulo</th>
+              <th>conteudo</th>
+          </tr>
+
+          {% for nota in notas %}
+          <tr>
+            <td>{{nota.id_nota}}</td>
+            <td>{{nota.titulo}}</td>
+            <td>{{nota.conteudo}}</td>
+          </tr>
+          {% endfor %}
+      </table>
+  </div>
+</div>
+{% endblock %}

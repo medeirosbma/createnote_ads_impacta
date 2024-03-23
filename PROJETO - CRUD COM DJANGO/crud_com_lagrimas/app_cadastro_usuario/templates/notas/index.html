@@ -1,0 +1,24 @@
+{% extends 'notas/model.html' %}
+{% block conteudo %}
+
+<form action="{% url 'listagem_notas' %}" method="post">
+      {% csrf_token %}
+
+        <div style="text-align: center;" class="container">
+            <h1>Cadastro de Notas</h1>
+            
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Título da Nota</span>
+                <input name="titulo" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+              </div>
+    
+            <div class="input-group input-group-lg">
+                <span class="input-group-text" id="inputGroup-sizing-lg">Conteúdo</span>
+                <input name="conteudo" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+            </div>
+    
+            <br>
+            <button type="submit" class="btn btn-success">Salvar e Finalizar Edição</button
+        </div>
+    </form>
+{% endblock %}
