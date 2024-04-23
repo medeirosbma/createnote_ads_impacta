@@ -1,24 +1,39 @@
-{% extends 'notas/model.html' %}
+{% extends 'notas/model.html'%}
 {% block conteudo %}
 
 <form action="{% url 'listagem_notas' %}" method="post">
       {% csrf_token %}
 
         <div style="text-align: center;" class="container">
-            <h1>Cadastro de Notas</h1>
+          <h1>Cadastro de Notas</h1>
             
+          <div class="input-group mb-3">
+              <span class="input-group-text" id="inputGroup-sizing-default">Título da Nota</span>
+              <input name="titulo_form" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          </div>
+
+          
             <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Título da Nota</span>
-                <input name="titulo" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-              </div>
-    
+              <span class="input-group-text" id="inputGroup-sizing-default">Tópico  da Nota (Em Breve) </span>
+              <select class="form-select" aria-label="Default select example" disabled>
+                <option selected="1">Em Breve</option>
+               
+                
+                
+                <option value="{{nota.topico.i}}">{{nota.topico.i}}</option>
+               
+                
+
+              </select>
+            </div>
+
             <div class="input-group input-group-lg">
                 <span class="input-group-text" id="inputGroup-sizing-lg">Conteúdo</span>
-                <input name="conteudo" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                <input name="conteudo_form" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
             </div>
     
             <br>
-            <button type="submit" class="btn btn-success">Salvar e Finalizar Edição</button
+            <button type="submit" class="btn btn-success">Criar Nota</button
         </div>
     </form>
 {% endblock %}

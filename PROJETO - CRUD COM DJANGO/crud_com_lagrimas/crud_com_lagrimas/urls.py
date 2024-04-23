@@ -12,5 +12,8 @@ urlpatterns = [
     path('notas/', views.criar_nota,  name="listagem_notas"),
     
     path('lista_notas/', views.lista_notas,  name='lista_notas'),
+
+    path('deletar_nota/<int:id>', views.deletar_nota, name='deletar_nota'),
     
+ 
 ]

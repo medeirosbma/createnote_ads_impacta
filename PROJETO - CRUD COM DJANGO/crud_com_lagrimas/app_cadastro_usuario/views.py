@@ -1,15 +1,21 @@
-from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 from .models import Nota
 
 # Create your views here.
 
 def home(request):
-    return render(request,'notas/index.html')
+    notas = {
+        'notas':Nota.objects.all()
+    }
+    return render(request,'notas/index.html', notas)
 
 def criar_nota(request):
     nova_nota = Nota()
-    nova_nota.titulo = request.POST.get( 'titulo' )
-    nova_nota.conteudo = request.POST.get( 'conteudo' )
+    #nova_nota.topico = request.POST.get('topico')
+    nova_nota.titulo_db = request.POST.get( 'titulo_form' )
+    nova_nota.conteudo_db = request.POST.get( 'conteudo_form' )
     nova_nota.save()
     #Exibir notas
     notas = {
@@ -23,3 +29,8 @@ def lista_notas(request):
         'notas':Nota.objects.all()
     }
     return render(request, 'notas/notas.html', notas)
+
+def deletar_nota(request, id):
+    nota = Nota.objects.filter(id_nota=id)
+    nota.delete()
+    return render(request,'notas/notas.html')

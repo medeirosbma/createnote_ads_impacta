@@ -7,16 +7,21 @@
   <div class="container">
       <table class="table table-striped">
           <tr>
-              <th>id</th>
-              <th>titulo</th>
-              <th>conteudo</th>
+              <th>Identificação</th>
+              <th>Título</th>
+              <!-------<th>Tópico (Em Breve)</th> -->
+              <th>Conteúdo</th>
+              <th>Opções</th>
           </tr>
 
+          
           {% for nota in notas %}
           <tr>
-            <td>{{nota.id_nota}}</td>
-            <td>{{nota.titulo}}</td>
-            <td>{{nota.conteudo}}</td>
+            <td id="id_nota">{{nota.id_nota}}</td>
+            <td id="titulo"  >{{nota.titulo_db}}</td>
+            <!-------<td id="topico"  >{{nota.topico}}</td> -->
+            <td  id="conteudo" >{{nota.conteudo_db}}</td>
+            <td > <a class="btn btn-danger" href="/deletar_nota/{{nota.id_nota}}" >Deletar</a>
           </tr>
           {% endfor %}
       </table>
